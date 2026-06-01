@@ -18,7 +18,10 @@ import {
   Trophy,
   Shirt,
   Gamepad2,
-  ShoppingBasket
+  ShoppingBasket,
+  Play,
+  X,
+  Tv
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -30,6 +33,43 @@ export default function Home() {
   const [selectedAddress, setSelectedAddress] = useState('Enviar a Emmanuel - Calle Falsa 123');
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState<any>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const movies = [
+    { 
+      id: 1, 
+      title: 'Del revés 2 (Inside Out 2)', 
+      genre: 'Animación • Familiar', 
+      poster: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400', 
+      bg: 'from-blue-600 to-indigo-950', 
+      desc: 'Vuelven las emociones de Riley. Alegría, Tristeza, Ira, Miedo y Asco tendrán que lidiar con la llegada de Ansiedad.'
+    },
+    { 
+      id: 2, 
+      title: 'Deadpool & Wolverine', 
+      genre: 'Acción • Comedia', 
+      poster: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=400', 
+      bg: 'from-red-650 to-zinc-950', 
+      desc: 'Wolverine se recupera de sus heridas cuando se cruza con el bocazas Deadpool. Se unen para derrotar a un enemigo común.'
+    },
+    { 
+      id: 3, 
+      title: 'Avatar: El Sentido del Agua', 
+      genre: 'Ciencia Ficción • Aventura', 
+      poster: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400', 
+      bg: 'from-cyan-700 to-slate-950', 
+      desc: 'Jake Sully y Neytiri han formado una familia y hacen todo lo posible por permanecer juntos explorando las regiones de Pandora.'
+    },
+    { 
+      id: 4, 
+      title: 'El Rey León', 
+      genre: 'Aventura • Drama', 
+      poster: 'https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=400', 
+      bg: 'from-amber-600 to-amber-950', 
+      desc: 'Tras la muerte de su padre, Simba huye de su reino. Años después, regresa para recuperar lo que le corresponde.'
+    }
+  ];
 
   const addresses = [
     'Enviar a Emmanuel - Calle Falsa 123',
@@ -333,6 +373,68 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Mercado Play (Peliculas y Series gratis) */}
+        <div className="bg-gradient-to-br from-slate-900 via-slate-950 to-zinc-950 p-4 mx-4 rounded-xl shadow-md border border-slate-800 text-white relative overflow-hidden">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-3.5 relative z-10">
+            <div className="flex items-center gap-1.5">
+              <div className="bg-cyan-500 rounded-lg p-1 flex items-center justify-center">
+                <Play className="w-3.5 h-3.5 text-black fill-current" />
+              </div>
+              <div>
+                <span className="font-extrabold text-sm tracking-tight text-white italic">
+                  mercado <span className="text-cyan-400 not-italic">play</span>
+                </span>
+                <p className="text-[9px] text-cyan-300 font-semibold leading-none mt-0.5">Películas y series gratis</p>
+              </div>
+            </div>
+            <span className="bg-cyan-400 text-black text-[8px] font-black px-1.5 py-0.5 rounded tracking-wide uppercase shadow-xs">
+              Meli+ Benefit
+            </span>
+          </div>
+
+          {/* Description */}
+          <p className="text-[10px] text-gray-400 mb-3 relative z-10 leading-snug">
+            Disfruta de streaming gratis con anuncios o vincula tu cuenta para transmitir a una pantalla.
+          </p>
+
+          {/* Horizontal Scroll of Movies */}
+          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide snap-x relative z-10">
+            {movies.map((movie) => (
+              <button
+                key={movie.id}
+                onClick={() => {
+                  setSelectedMovie(movie);
+                  setIsPlaying(false);
+                }}
+                className="snap-start w-28 text-left flex-shrink-0 flex flex-col gap-1.5 focus:outline-none cursor-pointer group"
+              >
+                <div className="relative aspect-[2/3] rounded-lg overflow-hidden border border-slate-800 bg-zinc-900 shadow-sm transition-all group-hover:scale-[1.03] group-hover:border-cyan-400/50">
+                  <ImageWithFallback
+                    src={movie.poster}
+                    alt={movie.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="bg-cyan-400 rounded-full p-2 text-black shadow-md">
+                      <Play className="w-4 h-4 fill-current ml-0.5" />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-bold text-gray-200 line-clamp-1 group-hover:text-cyan-400 leading-tight">
+                    {movie.title}
+                  </h4>
+                  <p className="text-[8px] text-gray-500 font-semibold truncate mt-0.5">{movie.genre}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+          
+          {/* Decorative light reflection */}
+          <div className="absolute right-0 top-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+        </div>
+
         {/* Explorar más links */}
         <div className="bg-white p-4 mx-4 rounded-xl shadow-sm border border-gray-50 mb-6">
           <h2 className="font-extrabold text-sm text-gray-800 mb-3 uppercase tracking-wider text-[10px] text-gray-400">
@@ -400,6 +502,99 @@ export default function Home() {
                   </div>
                 </button>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mercado Play Mock Video Player Modal */}
+      {selectedMovie && (
+        <div className="absolute inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="w-full max-w-[390px] bg-zinc-950 rounded-2xl overflow-hidden border border-zinc-850 shadow-2xl animate-in zoom-in-95 duration-200 text-white">
+            {/* Player Area */}
+            <div className={`relative aspect-video flex items-center justify-center bg-zinc-900 border-b border-zinc-900`}>
+              {isPlaying ? (
+                // Playing Screen Mock
+                <div className="w-full h-full relative flex flex-col justify-between p-3 bg-black">
+                  {/* Top bar */}
+                  <div className="flex items-center justify-between text-[10px] text-gray-400">
+                    <span className="font-semibold">{selectedMovie.title}</span>
+                    <span className="bg-red-600 text-white text-[8px] font-bold px-1 rounded uppercase">VIVO</span>
+                  </div>
+                  {/* Streaming Spinner or Play Mock animation */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                    <div className="w-8 h-8 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
+                    <span className="text-[10px] text-cyan-400 font-bold tracking-wider uppercase animate-pulse">Reproduciendo...</span>
+                  </div>
+                  {/* Video Controls overlay */}
+                  <div className="w-full flex items-center justify-between mt-auto z-10 pt-2 text-[10px] text-gray-300">
+                    <span>0:14 / {selectedMovie.duration || '2h 10m'}</span>
+                    <button 
+                      onClick={() => setIsPlaying(false)}
+                      className="text-xs text-cyan-400 font-bold hover:underline cursor-pointer"
+                    >
+                      Pausar
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                // Movie Splash Cover with Play button
+                <>
+                  <ImageWithFallback
+                    src={selectedMovie.poster}
+                    alt={selectedMovie.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-30"
+                  />
+                  <div className="relative z-10 flex flex-col items-center gap-2 text-center px-4">
+                    <button 
+                      onClick={() => setIsPlaying(true)}
+                      className="bg-cyan-400 hover:bg-cyan-500 text-black rounded-full p-4 shadow-xl transform hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                    >
+                      <Play className="w-6 h-6 fill-current ml-0.5" />
+                    </button>
+                    <span className="text-xs font-bold text-gray-250">Reproducir ahora</span>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Info details Area */}
+            <div className="p-4 space-y-3">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="font-extrabold text-sm text-white leading-tight">{selectedMovie.title}</h3>
+                  <p className="text-[10px] text-cyan-400 font-semibold mt-1">{selectedMovie.genre}</p>
+                </div>
+                <button 
+                  onClick={() => {
+                    setSelectedMovie(null);
+                    setIsPlaying(false);
+                  }}
+                  className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-gray-400 hover:text-white p-1.5 rounded-full transition-colors cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <p className="text-[11px] text-gray-400 leading-relaxed">
+                {selectedMovie.desc}
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex gap-2.5 pt-1.5">
+                <button 
+                  onClick={() => setIsPlaying(true)}
+                  className="flex-1 bg-cyan-400 hover:bg-cyan-500 text-black py-2.5 rounded-xl font-bold text-xs shadow-md transition-colors cursor-pointer text-center"
+                >
+                  Ver en celular
+                </button>
+                <button 
+                  onClick={() => alert(`Transmitiendo "${selectedMovie.title}" a tu Smart TV... 📺`)}
+                  className="flex-1 bg-zinc-900 hover:bg-zinc-800 text-white border border-zinc-800 py-2.5 rounded-xl font-bold text-xs transition-colors cursor-pointer text-center flex items-center justify-center gap-1.5"
+                >
+                  <Tv className="w-3.5 h-3.5" /> Transmitir a TV
+                </button>
+              </div>
             </div>
           </div>
         </div>
