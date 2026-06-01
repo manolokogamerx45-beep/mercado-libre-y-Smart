@@ -1,57 +1,79 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Printer } from 'lucide-react';
 
 export default function MockupGallery() {
+  const [activeTab, setActiveTab] = useState<'mobile' | 'watch'>('mobile');
+
   const mockups = [
+    // Mobile Mockups
     {
       id: 1,
       title: 'Inicio',
       route: '/mockup/home',
-      image: 'home'
+      type: 'mobile'
     },
     {
       id: 2,
       title: 'Productos',
       route: '/mockup/products/tecnología',
-      image: 'products'
+      type: 'mobile'
     },
     {
       id: 3,
       title: 'Detalle de Producto',
       route: '/mockup/product/1',
-      image: 'detail'
+      type: 'mobile'
     },
     {
       id: 4,
       title: 'Carrito de Compras',
       route: '/mockup/cart',
-      image: 'cart'
+      type: 'mobile'
     },
     {
       id: 5,
       title: 'Favoritos',
       route: '/mockup/favorites',
-      image: 'favorites'
+      type: 'mobile'
     },
     {
       id: 6,
       title: 'Notificaciones',
       route: '/mockup/notifications',
-      image: 'notifications'
+      type: 'mobile'
     },
     {
       id: 7,
       title: 'Mi Cuenta',
       route: '/mockup/account',
-      image: 'account'
+      type: 'mobile'
     },
     {
       id: 8,
       title: 'Menú Lateral',
       route: '/mockup/menu',
-      image: 'menu'
+      type: 'mobile'
     },
+    // Smartwatch Mockups
+    {
+      id: 9,
+      title: 'Inicio (Watchface)',
+      route: '/mockup/smartwatch/home',
+      type: 'watch'
+    },
+    {
+      id: 10,
+      title: 'Menú de Aplicaciones',
+      route: '/mockup/smartwatch/apps',
+      type: 'watch'
+    },
+    {
+      id: 11,
+      title: 'Notificación de Envío',
+      route: '/mockup/smartwatch/meli-app',
+      type: 'watch'
+    }
   ];
 
   const handlePrint = () => {
@@ -136,7 +158,7 @@ export default function MockupGallery() {
     <div className="min-h-screen bg-[#F5F5F5] font-sans text-gray-900 pb-12 print:bg-white print:pb-0">
       
       {/* Mercado Libre Yellow Header Bar */}
-      <header className="bg-[#FFE600] px-8 py-4 flex flex-col sm:flex-row items-center justify-between border-b border-yellow-400 gap-4 print:hidden">
+      <header className="bg-[#FFE600] px-8 py-4 flex flex-col sm:flex-row items-center justify-between border-b border-yellow-400/30 gap-4 print:hidden">
         <div className="flex items-center gap-3">
           <span className="font-extrabold text-2xl tracking-tight text-gray-800 flex items-center gap-1 select-none">
             mercado <span className="text-[#3483FA] italic">libre</span>
@@ -158,9 +180,33 @@ export default function MockupGallery() {
 
       {/* Main Section */}
       <div className="max-w-7xl mx-auto px-6 mt-8">
-        <div className="text-center mb-8 print:hidden">
-          <h2 className="text-2xl font-bold text-gray-800">Galería de Pantallas Móviles</h2>
-          <p className="text-sm text-gray-500 mt-1">Navega e interactúa directamente en el simulador móvil</p>
+        <div className="text-center mb-6 print:hidden">
+          <h2 className="text-2xl font-bold text-gray-800">Galería de Pantallas Simuladas</h2>
+          <p className="text-sm text-gray-500 mt-1">Navega e interactúa directamente en los simuladores</p>
+        </div>
+
+        {/* Tab Switcher - Screen Only */}
+        <div className="flex justify-center gap-4 mb-8 print:hidden select-none">
+          <button
+            onClick={() => setActiveTab('mobile')}
+            className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all cursor-pointer ${
+              activeTab === 'mobile'
+                ? 'bg-[#3483FA] text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+            }`}
+          >
+            Maquetas Celular ({mockups.filter(m => m.type === 'mobile').length})
+          </button>
+          <button
+            onClick={() => setActiveTab('watch')}
+            className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all cursor-pointer ${
+              activeTab === 'watch'
+                ? 'bg-[#3483FA] text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+            }`}
+          >
+            Maquetas Smartwatch ({mockups.filter(m => m.type === 'watch').length})
+          </button>
         </div>
 
         {/* Mockups Gallery Grid */}
@@ -169,39 +215,56 @@ export default function MockupGallery() {
             {mockups.map((mockup) => (
               <div
                 key={mockup.id}
-                className="group flex flex-col items-center print:[page-break-after:always] print:w-full print:justify-center"
+                className={`group flex-col items-center print:[page-break-after:always] print:w-full print:justify-center ${
+                  mockup.type === activeTab ? 'flex' : 'hidden print:flex'
+                }`}
               >
                 
-                {/* Phone Simulator Frame */}
+                {/* Simulator Frame */}
                 <Link
                   to={mockup.route}
                   className="relative transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 print:transform-none print:hover:scale-100 print:hover:-translate-y-0"
                 >
-                  {/* Phone Shadow - Hidden when printing */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-600 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity print:hidden" />
+                  {mockup.type === 'mobile' ? (
+                    <>
+                      {/* Phone Shadow - Hidden when printing */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-400 to-gray-600 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity print:hidden" />
 
-                  {/* Phone Container */}
-                  <div className="relative bg-gradient-to-br from-gray-800 to-zinc-900 rounded-[3rem] p-3 shadow-2xl print:bg-none print:p-0 print:shadow-none print:rounded-none">
-                    {/* Notch - Hidden when printing */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-3xl z-10 print:hidden" />
+                      {/* Phone Container */}
+                      <div className="relative bg-gradient-to-br from-gray-800 to-zinc-900 rounded-[3rem] p-3 shadow-2xl print:bg-none print:p-0 print:shadow-none print:rounded-none">
+                        {/* Notch - Hidden when printing */}
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-gray-900 rounded-b-3xl z-10 print:hidden" />
 
-                    {/* Screen */}
-                    <div className="relative w-[280px] h-[580px] bg-white rounded-[2.5rem] overflow-hidden print:w-[380px] print:h-auto print:max-h-none print:overflow-visible print:rounded-none print:border-2 print:border-gray-200">
-                      {/* Live Preview Iframe */}
-                      <iframe
-                        src={mockup.route}
-                        className="w-full h-full border-0 pointer-events-none print:h-auto print:max-h-none print:overflow-visible"
-                        title={mockup.title}
-                      />
-                    </div>
+                        {/* Screen */}
+                        <div className="relative w-[280px] h-[580px] bg-white rounded-[2.5rem] overflow-hidden print:w-[380px] print:h-auto print:max-h-none print:overflow-visible print:rounded-none print:border-2 print:border-gray-200">
+                          {/* Live Preview Iframe */}
+                          <iframe
+                            src={mockup.route}
+                            className="w-full h-full border-0 pointer-events-none print:h-auto print:max-h-none print:overflow-visible"
+                            title={mockup.title}
+                          />
+                        </div>
 
-                    {/* Home Button - Hidden when printing */}
-                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-gray-700 rounded-full print:hidden" />
-                  </div>
+                        {/* Home Button - Hidden when printing */}
+                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-gray-700 rounded-full print:hidden" />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Watch Container (Simulator logic already inside watch views) */}
+                      <div className="relative w-[280px] h-[340px] rounded-[3rem] overflow-hidden print:w-[380px] print:h-auto print:max-h-none print:overflow-visible">
+                        <iframe
+                          src={mockup.route}
+                          className="w-full h-full border-0 pointer-events-none print:h-auto print:max-h-none print:overflow-visible"
+                          title={mockup.title}
+                        />
+                      </div>
+                    </>
+                  )}
                 </Link>
 
                 {/* Label */}
-                <p className="mt-6 text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors print:mt-4 print:text-base print:text-gray-900">
+                <p className="mt-6 text-lg font-bold text-gray-800 group-hover:text-[#3483FA] transition-colors print:mt-4 print:text-base print:text-gray-900">
                   {mockup.title}
                 </p>
               </div>
@@ -211,12 +274,12 @@ export default function MockupGallery() {
       </div>
 
       {/* Navigation Hint - Hidden when printing */}
-      <div className="text-center mt-12 print:hidden">
+      <div className="text-center mt-12 print:hidden select-none">
         <p className="text-gray-400 text-xs">
-          ← Desliza horizontalmente para ver todas las pantallas del simulador →
+          ← Desliza horizontalmente o usa los botones para alternar entre dispositivos →
         </p>
         <p className="text-gray-400 text-[10px] mt-1.5 font-semibold">
-          Haz clic en cualquier pantalla para interactuar con ella en detalle
+          Haz clic en cualquier dispositivo para interactuar con él en pantalla completa
         </p>
       </div>
     </div>

@@ -9,6 +9,12 @@ import Notifications from './components/Notifications';
 import Account from './components/Account';
 import Menu from './components/Menu';
 
+// Smartwatch Mockups
+import WatchSimulator from '../maquetado smart watch/WatchSimulator';
+import WatchHome from '../maquetado smart watch/WatchHome';
+import WatchApps from '../maquetado smart watch/WatchApps';
+import WatchMeliApp from '../maquetado smart watch/WatchMeliApp';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -16,7 +22,7 @@ export default function App() {
         {/* Gallery Route */}
         <Route path="/" element={<MockupGallery />} />
 
-        {/* Mockup Routes */}
+        {/* Mobile Mockup Routes */}
         <Route path="/mockup/home" element={
           <div className="size-full bg-[#EEEEEE] overflow-auto">
             <div className="max-w-[430px] mx-auto min-h-screen bg-white">
@@ -72,6 +78,23 @@ export default function App() {
               <Menu />
             </div>
           </div>
+        } />
+
+        {/* Smartwatch Mockup Routes */}
+        <Route path="/mockup/smartwatch/home" element={
+          <WatchSimulator>
+            <WatchHome />
+          </WatchSimulator>
+        } />
+        <Route path="/mockup/smartwatch/apps" element={
+          <WatchSimulator>
+            <WatchApps />
+          </WatchSimulator>
+        } />
+        <Route path="/mockup/smartwatch/meli-app" element={
+          <WatchSimulator>
+            <WatchMeliApp />
+          </WatchSimulator>
         } />
       </Routes>
     </BrowserRouter>
