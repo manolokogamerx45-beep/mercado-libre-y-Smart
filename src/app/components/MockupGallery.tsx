@@ -57,10 +57,10 @@ export default function MockupGallery() {
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-gray-900 mb-3">
-          Mercado Libre
+          Mercado Libre & Smart
         </h1>
         <p className="text-xl text-gray-600">
-          Maquetados para Android
+          Maquetados para Android & Smartwatch
         </p>
       </div>
 

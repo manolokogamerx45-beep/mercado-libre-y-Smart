@@ -1,5 +1,6 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "mercado-libre-y-smart",
+  "description": "Maquetado de Mercado Libre con soporte para Smartwatches",
   "private": true,
   "version": "0.0.1",
   "type": "module",

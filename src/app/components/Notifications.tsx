@@ -9,6 +9,22 @@ export default function Notifications() {
   
   const [notifications, setNotifications] = useState([
     {
+      id: 0,
+      type: 'compras',
+      icon: <Truck className="w-5 h-5 text-green-600" />,
+      title: '¡Prepárate para recibir tu pedido!',
+      message: 'El repartidor ya está en camino con tu paquete de Apple Store Oficial. Podrás seguirlo en tiempo real.',
+      time: 'Hace unos minutos',
+      unread: true,
+      details: {
+        orderId: '#45822',
+        seller: 'Apple Store Oficial',
+        carrier: 'Meli Envíos (En ruta de entrega)',
+        status: 'El repartidor está cerca de tu domicilio 🚚',
+        deliveryDate: 'Hoy'
+      }
+    },
+    {
       id: 1,
       type: 'compras',
       icon: <Package className="w-5 h-5 text-blue-600" />,
