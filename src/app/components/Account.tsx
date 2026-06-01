@@ -23,17 +23,17 @@ export default function Account() {
   ];
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans text-gray-900 pb-16">
+    <div className="flex flex-col h-screen bg-meli-light font-sans text-gray-900 pb-16">
       
       {/* Header */}
-      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
-        <Link to="/mockup/menu" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
+        <Link to="/mockup/menu" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <Menu className="w-6 h-6 text-gray-800" />
         </Link>
         <h1 className="font-extrabold text-gray-800 text-base tracking-tight">Mi cuenta</h1>
-        <Link to="/mockup/cart" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors relative">
+        <Link to="/mockup/cart" className="p-1 hover:bg-black/5 rounded-full transition-colors relative">
           <ShoppingCart className="w-6 h-6 text-gray-800" />
-          <span className="absolute top-0 right-0 bg-[#3483FA] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-[#FFE600]">
+          <span className="absolute top-0 right-0 bg-meli-blue text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-meli-yellow">
             2
           </span>
         </Link>
@@ -60,18 +60,18 @@ export default function Account() {
           <div className="bg-gradient-to-r from-[#0C1A30] to-[#1D2F4E] rounded-xl p-4 text-white shadow-sm border border-gray-800/10">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-1.5">
-                <span className="bg-blue-600 text-[10px] font-black px-1.5 py-0.5 rounded tracking-wide">meli+</span>
+                <span className="bg-meli-blue text-[10px] font-black px-1.5 py-0.5 rounded tracking-wide">meli+</span>
                 <span className="text-xs font-semibold text-gray-300">Nivel 6 • Suscripto</span>
               </div>
               <span className="text-xs">🏆 Beneficios activos</span>
             </div>
             
             <div className="w-full bg-white/10 rounded-full h-1.5 mb-2 overflow-hidden">
-              <div className="bg-blue-500 rounded-full h-1.5 w-4/5"></div>
+              <div className="bg-meli-blue rounded-full h-1.5 w-4/5"></div>
             </div>
             <div className="flex justify-between items-center text-[10px] text-gray-300 font-medium">
               <span>800 / 1000 Puntos</span>
-              <span className="text-blue-400 font-bold hover:underline">Ver mis beneficios</span>
+              <span className="text-meli-blue font-bold hover:underline">Ver mis beneficios</span>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@ export default function Account() {
         {/* Mercado Pago Wallet Mini Card */}
         <div className="bg-white p-4 shadow-sm border-y border-gray-100">
           <div className="flex items-center justify-between border-b pb-2 mb-3">
-            <span className="font-extrabold text-sm tracking-tight text-blue-600 italic">
+            <span className="font-extrabold text-sm tracking-tight text-meli-blue italic">
               mercado <span className="text-gray-800">pago</span>
             </span>
             <button 
@@ -100,7 +100,7 @@ export default function Account() {
             
             <button 
               onClick={() => setShowCVU(!showCVU)}
-              className="border border-blue-200 hover:bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+              className="border border-meli-blue/20 hover:bg-blue-50 text-meli-blue text-[10px] font-bold px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
             >
               {showCVU ? 'CVU: 000000310000...' : 'Ver CVU y datos'}
             </button>
@@ -136,7 +136,7 @@ export default function Account() {
               </div>
               <div className="flex items-center gap-2">
                 {item.badge && (
-                  <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <span className="bg-meli-blue text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                     {item.badge}
                   </span>
                 )}

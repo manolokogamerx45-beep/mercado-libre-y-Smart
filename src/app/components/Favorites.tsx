@@ -32,7 +32,7 @@ export default function Favorites() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans text-gray-900 pb-16 relative">
+    <div className="flex flex-col h-screen bg-meli-light font-sans text-gray-900 pb-16 relative">
       
       {/* Toast Alert */}
       {showToast && (
@@ -43,15 +43,15 @@ export default function Favorites() {
       )}
 
       {/* Header */}
-      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
-        <Link to="/mockup/menu" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
+        <Link to="/mockup/menu" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <Menu className="w-6 h-6 text-gray-800" />
         </Link>
         <h1 className="font-extrabold text-gray-800 text-base tracking-tight">Favoritos ({favorites.length})</h1>
-        <Link to="/mockup/cart" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors relative">
+        <Link to="/mockup/cart" className="p-1 hover:bg-black/5 rounded-full transition-colors relative">
           <ShoppingCart className="w-6 h-6 text-gray-800" />
           {cartBadge > 0 && (
-            <span className="absolute top-0 right-0 bg-[#3483FA] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-[#FFE600]">
+            <span className="absolute top-0 right-0 bg-meli-blue text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-meli-yellow">
               {cartBadge}
             </span>
           )}
@@ -69,7 +69,7 @@ export default function Favorites() {
             </p>
             <Link
               to="/mockup/home"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-xs shadow-sm transition-colors"
+              className="bg-meli-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-xs shadow-sm transition-colors"
             >
               Explorar productos
             </Link>
@@ -107,7 +107,7 @@ export default function Favorites() {
                           </span>
                         )}
                       </div>
-                      <p className="text-[10px] text-[#00A650] font-bold">Envío gratis ⚡ FULL</p>
+                      <p className="text-[10px] text-meli-green font-bold">Envío gratis ⚡ FULL</p>
                       {!item.stock && (
                         <p className="text-[9px] text-red-500 font-extrabold uppercase mt-0.5">Sin stock por el momento</p>
                       )}
@@ -129,7 +129,7 @@ export default function Favorites() {
                     onClick={() => handleAddToCart(item.title)}
                     className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all shadow-xs cursor-pointer ${
                       item.stock 
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                        ? 'bg-meli-blue hover:bg-blue-700 text-white' 
                         : 'bg-gray-100 text-gray-400 cursor-not-allowed border'
                     }`}
                   >

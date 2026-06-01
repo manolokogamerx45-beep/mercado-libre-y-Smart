@@ -13,8 +13,6 @@ import {
   Percent,
   Eye,
   EyeOff,
-  Bell,
-  CheckCircle,
   Smartphone,
   Home as HomeIcon,
   Trophy,
@@ -44,7 +42,7 @@ export default function Home() {
       id: 1,
       title: 'Meli+ Cyber Deals',
       subtitle: 'Hasta 50% OFF y 12 cuotas sin interés',
-      gradient: 'from-blue-600 to-indigo-900',
+      bgStyle: 'linear-gradient(135deg, #2563eb, #1e1b4b)',
       badge: 'CYBER WEEK',
       linkText: 'Ver ofertas'
     },
@@ -52,7 +50,7 @@ export default function Home() {
       id: 2,
       title: 'Moda e Invierno',
       subtitle: 'Descuentos exclusivos y envío FULL gratis',
-      gradient: 'from-pink-600 to-purple-800',
+      bgStyle: 'linear-gradient(135deg, #db2777, #581c87)',
       badge: 'TENDENCIAS',
       linkText: 'Explorar colección'
     },
@@ -60,16 +58,16 @@ export default function Home() {
       id: 3,
       title: 'Tecno de Vanguardia',
       subtitle: 'Laptops, consolas y accesorios premium',
-      gradient: 'from-teal-600 to-slate-900',
+      bgStyle: 'linear-gradient(135deg, #0d9488, #0f172a)',
       badge: 'TECH DAY',
       linkText: 'Ver lanzamientos'
     }
   ];
 
   const categories = [
-    { id: 1, name: 'Tecnología', icon: <Smartphone className="w-6 h-6 text-blue-600" />, bg: 'bg-blue-50' },
+    { id: 1, name: 'Tecnología', icon: <Smartphone className="w-6 h-6 text-meli-blue" />, bg: 'bg-blue-50' },
     { id: 2, name: 'Hogar', icon: <HomeIcon className="w-6 h-6 text-orange-600" />, bg: 'bg-orange-50' },
-    { id: 3, name: 'Deportes', icon: <Trophy className="w-6 h-6 text-green-600" />, bg: 'bg-green-50' },
+    { id: 3, name: 'Deportes', icon: <Trophy className="w-6 h-6 text-meli-green" />, bg: 'bg-green-50' },
     { id: 4, name: 'Moda', icon: <Shirt className="w-6 h-6 text-pink-600" />, bg: 'bg-pink-50' },
     { id: 5, name: 'Juguetes', icon: <Gamepad2 className="w-6 h-6 text-purple-600" />, bg: 'bg-purple-50' },
     { id: 6, name: 'Supermercado', icon: <ShoppingBasket className="w-6 h-6 text-teal-600" />, bg: 'bg-teal-50' },
@@ -91,27 +89,27 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-sans text-gray-900 pb-16 relative">
+    <div className="flex flex-col min-h-screen bg-meli-light font-sans text-gray-900 pb-16 relative">
       
       {/* Header Container */}
-      <div className="bg-[#FFE600] pt-3 pb-2 px-4 shadow-sm sticky top-0 z-30">
+      <div className="bg-meli-yellow pt-3 pb-2 px-4 shadow-sm sticky top-0 z-30">
         <div className="flex items-center justify-between gap-3 mb-2">
           {/* Menu Trigger */}
-          <Link to="/mockup/menu" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+          <Link to="/mockup/menu" className="p-1 hover:bg-black/5 rounded-full transition-colors">
             <MenuIcon className="w-6 h-6 text-gray-800" />
           </Link>
           
           {/* Logo / Meli Title */}
           <div className="flex-1 flex justify-center">
             <span className="font-extrabold text-xl tracking-tight text-gray-800 flex items-center gap-1 select-none">
-              mercado <span className="text-[#3483FA] italic">libre</span>
+              mercado <span className="text-meli-blue italic">libre</span>
             </span>
           </div>
 
           {/* Cart Trigger */}
-          <Link to="/mockup/cart" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors relative">
+          <Link to="/mockup/cart" className="p-1 hover:bg-black/5 rounded-full transition-colors relative">
             <ShoppingCart className="w-6 h-6 text-gray-800" />
-            <span className="absolute top-0 right-0 bg-[#3483FA] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-[#FFE600]">
+            <span className="absolute top-0 right-0 bg-meli-blue text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-meli-yellow">
               2
             </span>
           </Link>
@@ -133,7 +131,7 @@ export default function Home() {
       {/* Address Bar */}
       <button 
         onClick={() => setShowAddressModal(true)}
-        className="bg-[#FFE600] px-4 py-1.5 flex items-center text-xs text-gray-700 font-medium select-none border-t border-[#FFE600]/20 hover:bg-[#F2DA00] transition-colors"
+        className="bg-meli-yellow px-4 py-1.5 flex items-center text-xs text-gray-700 font-medium select-none border-t border-meli-yellow/20 hover:bg-black/5 transition-colors"
       >
         <MapPin className="w-3.5 h-3.5 mr-1.5 text-gray-600 flex-shrink-0" />
         <span className="truncate flex-1 text-left">{selectedAddress}</span>
@@ -148,7 +146,7 @@ export default function Home() {
           {/* Header */}
           <div className="flex items-center justify-between mb-3 border-b border-gray-50 pb-2">
             <div className="flex items-center gap-1.5">
-              <span className="font-extrabold text-sm tracking-tight text-blue-600 italic">
+              <span className="font-extrabold text-sm tracking-tight text-meli-blue italic">
                 mercado <span className="text-gray-800">pago</span>
               </span>
             </div>
@@ -169,15 +167,15 @@ export default function Home() {
               </h2>
             </div>
             <div className="flex gap-2">
-              <button className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 text-blue-600 p-2.5 rounded-xl transition-colors cursor-pointer">
+              <button className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 text-meli-blue p-2.5 rounded-xl transition-colors cursor-pointer">
                 <QrCode className="w-5 h-5 mb-1" />
                 <span className="text-[10px] font-bold">Pagar QR</span>
               </button>
-              <button className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 text-blue-600 p-2.5 rounded-xl transition-colors cursor-pointer">
+              <button className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 text-meli-blue p-2.5 rounded-xl transition-colors cursor-pointer">
                 <Send className="w-5 h-5 mb-1" />
                 <span className="text-[10px] font-bold">Transferir</span>
               </button>
-              <button className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 text-blue-600 p-2.5 rounded-xl transition-colors cursor-pointer">
+              <button className="flex flex-col items-center justify-center bg-blue-50 hover:bg-blue-100 text-meli-blue p-2.5 rounded-xl transition-colors cursor-pointer">
                 <SmartphoneCharging className="w-5 h-5 mb-1" />
                 <span className="text-[10px] font-bold">Cargar</span>
               </button>
@@ -186,19 +184,22 @@ export default function Home() {
         </div>
 
         {/* meli+ Subscription Banner */}
-        <div className="mx-4 bg-gradient-to-r from-[#0C1A30] via-[#1E2E4B] to-[#344E86] text-white rounded-xl p-4 shadow-sm relative overflow-hidden flex items-center justify-between border border-gray-800/20 group hover:shadow-md transition-shadow">
+        <div 
+          style={{ background: 'linear-gradient(135deg, #0C1A30, #1E2E4B, #344E86)' }}
+          className="mx-4 text-white rounded-xl p-4 shadow-sm relative overflow-hidden flex items-center justify-between border border-gray-800/20 group hover:shadow-md transition-shadow"
+        >
           <div className="relative z-10">
-            <span className="bg-[#3483FA] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-md tracking-wider uppercase mb-1.5 inline-block">
+            <span className="bg-meli-blue text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-md tracking-wider uppercase mb-1.5 inline-block">
               BENEFICIOS EXTRA
             </span>
             <h3 className="font-extrabold text-base tracking-tight text-white leading-tight">
-              Suscribite a <span className="text-[#3483FA]">meli+</span>
+              Suscribite a <span className="text-meli-blue">meli+</span>
             </h3>
             <p className="text-[11px] text-gray-300 mt-1 max-w-[200px]">
               Envíos gratis en millones de productos y Disney+ Premium incluido.
             </p>
           </div>
-          <button className="relative z-10 bg-[#3483FA] hover:bg-[#2968C8] text-white px-3 py-2 rounded-lg text-xs font-bold transition-all transform group-hover:scale-105 shadow-sm">
+          <button className="relative z-10 bg-meli-blue hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-xs font-bold transition-all transform group-hover:scale-105 shadow-sm">
             Unirme
           </button>
           
@@ -211,7 +212,8 @@ export default function Home() {
           {carouselSlides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} p-5 flex flex-col justify-between text-white transition-opacity duration-700 ${
+              style={{ background: slide.bgStyle }}
+              className={`absolute inset-0 p-5 flex flex-col justify-between text-white transition-opacity duration-700 ${
                 index === currentSlide ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
               }`}
             >
@@ -247,10 +249,10 @@ export default function Home() {
         <div className="bg-white p-4 mx-4 rounded-xl shadow-sm border border-gray-50">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-extrabold text-base text-gray-800 tracking-tight flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[#FFE600] fill-[#FFE600]" />
+              <span className="text-meli-yellow">★</span>
               Categorías destacadas
             </h2>
-            <Link to="/mockup/menu" className="text-xs font-bold text-blue-600 hover:text-blue-700">
+            <Link to="/mockup/menu" className="text-xs font-bold text-meli-blue hover:text-blue-700">
               Ver todas
             </Link>
           </div>
@@ -275,10 +277,10 @@ export default function Home() {
         <div className="bg-white py-4 px-4 shadow-sm border-y border-gray-100">
           <div className="flex items-center justify-between mb-3">
             <h2 className="font-extrabold text-base text-gray-800 tracking-tight flex items-center gap-1.5">
-              <Percent className="w-4 h-4 text-green-600" />
+              <Percent className="w-4 h-4 text-meli-green" />
               Ofertas del día
             </h2>
-            <Link to="/mockup/products/ofertas" className="text-xs font-bold text-blue-600 hover:text-blue-700">
+            <Link to="/mockup/products/ofertas" className="text-xs font-bold text-meli-blue hover:text-blue-700">
               Ver más
             </Link>
           </div>
@@ -298,7 +300,7 @@ export default function Home() {
                     className="w-full h-32 object-cover"
                   />
                   {offer.isFull && (
-                    <span className="absolute bottom-2 left-2 bg-[#00A650] text-white text-[9px] font-black px-1.5 py-0.5 rounded flex items-center gap-0.5 italic shadow-sm">
+                    <span className="absolute bottom-2 left-2 bg-meli-green text-white text-[9px] font-black px-1.5 py-0.5 rounded flex items-center gap-0.5 italic shadow-sm">
                       ⚡ FULL
                     </span>
                   )}
@@ -311,7 +313,7 @@ export default function Home() {
                     </h4>
                     <div className="flex items-baseline gap-1 mt-1">
                       <span className="font-bold text-base text-gray-900">{offer.price}</span>
-                      <span className="text-[10px] text-green-600 font-bold bg-green-50 px-1 rounded">
+                      <span className="text-[10px] text-meli-green font-bold bg-green-50 px-1 rounded">
                         {offer.discount}
                       </span>
                     </div>
@@ -322,7 +324,7 @@ export default function Home() {
                     )}
                   </div>
                   <div className="mt-2 pt-1.5 border-t border-gray-50">
-                    <p className="text-[9px] text-[#00A650] font-bold">Envío gratis</p>
+                    <p className="text-[9px] text-meli-green font-bold">Envío gratis</p>
                     <p className="text-[9px] text-gray-400">en 12x ${(parseFloat(offer.price.replace('$','').replace(',',''))/12).toFixed(1)} sin int.</p>
                   </div>
                 </div>
@@ -342,7 +344,7 @@ export default function Home() {
                 <span className="text-lg">🔥</span>
                 <span className="text-xs font-semibold text-gray-700">Ver todas las ofertas del Hot Sale</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-blue-600" />
+              <ChevronRight className="w-4 h-4 text-meli-blue" />
             </Link>
             <Link to="/mockup/products/destacados" className="flex items-center justify-between p-3 bg-orange-50/50 hover:bg-orange-50 rounded-xl transition-colors">
               <div className="flex items-center gap-2">
@@ -356,7 +358,7 @@ export default function Home() {
                 <span className="text-lg">🏆</span>
                 <span className="text-xs font-semibold text-gray-700">Los artículos más vendidos del mes</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-green-600" />
+              <ChevronRight className="w-4 h-4 text-meli-green" />
             </Link>
           </div>
         </div>
@@ -387,11 +389,11 @@ export default function Home() {
                   }}
                   className={`w-full flex items-start gap-3 p-3.5 rounded-xl border text-left transition-colors ${
                     selectedAddress === address 
-                      ? 'border-blue-600 bg-blue-50/40 text-blue-700' 
+                      ? 'border-meli-blue bg-blue-50/40 text-meli-blue' 
                       : 'border-gray-150 hover:bg-gray-50 text-gray-700'
                   }`}
                 >
-                  <MapPin className={`w-5 h-5 flex-shrink-0 mt-0.5 ${selectedAddress === address ? 'text-blue-600' : 'text-gray-400'}`} />
+                  <MapPin className={`w-5 h-5 flex-shrink-0 mt-0.5 ${selectedAddress === address ? 'text-meli-blue' : 'text-gray-400'}`} />
                   <div>
                     <p className="text-xs font-bold">{address.split(' - ')[0]}</p>
                     <p className="text-xs opacity-90 mt-0.5">{address.split(' - ')[1]}</p>

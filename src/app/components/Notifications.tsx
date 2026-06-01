@@ -122,17 +122,17 @@ export default function Notifications() {
   });
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans text-gray-900 pb-16 relative">
+    <div className="flex flex-col h-screen bg-meli-light font-sans text-gray-900 pb-16 relative">
       
       {/* Header */}
-      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
-        <Link to="/mockup/menu" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
+        <Link to="/mockup/menu" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <Menu className="w-6 h-6 text-gray-800" />
         </Link>
         <h1 className="font-extrabold text-gray-800 text-base tracking-tight">Notificaciones</h1>
-        <Link to="/mockup/cart" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors relative">
+        <Link to="/mockup/cart" className="p-1 hover:bg-black/5 rounded-full transition-colors relative">
           <ShoppingCart className="w-6 h-6 text-gray-800" />
-          <span className="absolute top-0 right-0 bg-[#3483FA] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-[#FFE600]">
+          <span className="absolute top-0 right-0 bg-meli-blue text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-meli-yellow">
             2
           </span>
         </Link>
@@ -144,7 +144,7 @@ export default function Notifications() {
           <button 
             onClick={() => setActiveTab('todas')}
             className={`pb-2.5 pt-3.5 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
-              activeTab === 'todas' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === 'todas' ? 'border-meli-blue text-meli-blue' : 'border-transparent text-gray-500 hover:text-gray-700'
             }`}
           >
             Todas
@@ -152,7 +152,7 @@ export default function Notifications() {
           <button 
             onClick={() => setActiveTab('compras')}
             className={`pb-2.5 pt-3.5 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
-              activeTab === 'compras' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === 'compras' ? 'border-meli-blue text-meli-blue' : 'border-transparent text-gray-500 hover:text-gray-700'
             }`}
           >
             Compras
@@ -160,7 +160,7 @@ export default function Notifications() {
           <button 
             onClick={() => setActiveTab('ofertas')}
             className={`pb-2.5 pt-3.5 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
-              activeTab === 'ofertas' ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === 'ofertas' ? 'border-meli-blue text-meli-blue' : 'border-transparent text-gray-500 hover:text-gray-700'
             }`}
           >
             Ofertas
@@ -170,7 +170,7 @@ export default function Notifications() {
         {notifications.some(n => n.unread) && (
           <button 
             onClick={markAllAsRead}
-            className="text-[10px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-0.5 cursor-pointer"
+            className="text-[10px] font-bold text-meli-blue hover:text-blue-700 flex items-center gap-0.5 cursor-pointer"
           >
             <Check className="w-3.5 h-3.5" /> Marcar leído
           </button>
@@ -193,8 +193,8 @@ export default function Notifications() {
               <button
                 key={notif.id}
                 onClick={() => handleNotifClick(notif)}
-                className={`w-full flex gap-3.5 p-4 text-left transition-colors cursor-pointer ${
-                  notif.unread ? 'bg-blue-50/30' : 'hover:bg-gray-50/40'
+                 className={`w-full flex gap-3.5 p-4 text-left transition-colors cursor-pointer ${
+                  notif.unread ? 'bg-meli-blue/5' : 'hover:bg-gray-50/40'
                 }`}
               >
                 {/* Icon wrapper */}
@@ -207,7 +207,7 @@ export default function Notifications() {
                   <div className="flex items-start justify-between mb-0.5">
                     <h3 className="font-bold text-xs text-gray-800 leading-snug">{notif.title}</h3>
                     {notif.unread && (
-                      <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 ml-2 mt-1.5" />
+                      <div className="w-2 h-2 bg-meli-blue rounded-full flex-shrink-0 ml-2 mt-1.5" />
                     )}
                   </div>
                   <p className="text-xs text-gray-500 leading-normal line-clamp-2">
@@ -231,7 +231,7 @@ export default function Notifications() {
             {/* Modal header */}
             <div className="flex items-center justify-between border-b pb-3 mb-4">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 bg-blue-50 rounded-full">{selectedNotif.icon}</span>
+                <span className="p-1.5 bg-meli-blue/10 rounded-full">{selectedNotif.icon}</span>
                 <h3 className="font-extrabold text-gray-800 text-sm">{selectedNotif.title}</h3>
               </div>
               <button 
@@ -277,8 +277,8 @@ export default function Notifications() {
                     )}
                     <div className="col-span-2">
                       <p className="text-gray-400 text-[9px]">Estado de envío</p>
-                      <p className="font-bold text-green-600 flex items-center gap-1">
-                        <Check className="w-4 h-4 bg-green-500 text-white rounded-full p-0.5" />
+                      <p className="font-bold text-meli-green flex items-center gap-1">
+                        <Check className="w-4 h-4 bg-meli-green text-white rounded-full p-0.5" />
                         {selectedNotif.details.status}
                       </p>
                     </div>
@@ -313,13 +313,13 @@ export default function Notifications() {
                         {selectedNotif.details.currPrice && (
                           <div>
                             <p className="text-gray-400 text-[9px]">Precio de oferta</p>
-                            <p className="font-bold text-green-600">{selectedNotif.details.currPrice}</p>
+                            <p className="font-bold text-meli-green">{selectedNotif.details.currPrice}</p>
                           </div>
                         )}
                         {selectedNotif.details.coupon && (
                           <div>
                             <p className="text-gray-400 text-[9px]">Código Cupón</p>
-                            <p className="font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">{selectedNotif.details.coupon}</p>
+                            <p className="font-bold text-meli-blue bg-blue-50 px-1.5 py-0.5 rounded">{selectedNotif.details.coupon}</p>
                           </div>
                         )}
                       </div>
@@ -329,7 +329,7 @@ export default function Notifications() {
                       <Link 
                         to={selectedNotif.details.link}
                         onClick={() => setSelectedNotif(null)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors text-center whitespace-nowrap self-center"
+                        className="bg-meli-blue hover:bg-blue-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition-colors text-center whitespace-nowrap self-center"
                       >
                         Ver producto
                       </Link>
@@ -341,7 +341,7 @@ export default function Notifications() {
 
             <button 
               onClick={() => setSelectedNotif(null)}
-              className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-xs transition-colors cursor-pointer"
+              className="mt-6 w-full bg-meli-blue hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-xs transition-colors cursor-pointer"
             >
               Entendido
             </button>

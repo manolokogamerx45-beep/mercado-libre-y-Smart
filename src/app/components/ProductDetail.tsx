@@ -87,7 +87,7 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans relative overflow-hidden">
+    <div className="flex flex-col h-screen bg-meli-light font-sans relative overflow-hidden">
       
       {/* Toast Notification */}
       {showNotification && (
@@ -106,16 +106,16 @@ export default function ProductDetail() {
       )}
 
       {/* Header */}
-      <div className="bg-white px-4 py-3 flex items-center justify-between border-b border-gray-100 sticky top-0 z-30 shadow-xs">
-        <Link to="/mockup/products/tecnología" className="p-1 hover:bg-gray-100 rounded-full transition-colors">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between border-b border-meli-yellow/20 sticky top-0 z-30 shadow-sm">
+        <Link to="/mockup/products/tecnología" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <ChevronLeft className="w-6 h-6 text-gray-800" />
         </Link>
         <div className="flex gap-2">
-          <button className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-gray-700">
+          <button className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-gray-700">
             <Share2 className="w-5 h-5" />
           </button>
           <button 
-            className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-gray-700"
+            className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-gray-700"
             onClick={() => {
               setIsFavorite(!isFavorite);
               triggerNotification(!isFavorite ? 'Agregado a tus Favoritos ❤️' : 'Eliminado de tus Favoritos');
@@ -123,10 +123,10 @@ export default function ProductDetail() {
           >
             <Heart className={`w-5 h-5 transition-all ${isFavorite ? 'fill-red-500 text-red-500 scale-110' : 'text-gray-700'}`} />
           </button>
-          <Link to="/mockup/cart" className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-gray-700 relative">
+          <Link to="/mockup/cart" className="p-1.5 hover:bg-black/5 rounded-full transition-colors text-gray-700 relative">
             <ShoppingCart className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">
+              <span className="absolute -top-1 -right-1 bg-meli-blue text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-meli-yellow">
                 {cartCount}
               </span>
             )}
@@ -197,7 +197,7 @@ export default function ProductDetail() {
         <div className="p-4 border-b border-gray-100">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-gray-400 text-sm line-through">$1,499</span>
-            <span className="text-xs font-bold text-[#00A650] bg-green-50 px-1.5 py-0.5 rounded">
+            <span className="text-xs font-bold text-meli-green bg-green-50 px-1.5 py-0.5 rounded">
               15% OFF
             </span>
           </div>
@@ -208,9 +208,9 @@ export default function ProductDetail() {
           </div>
 
           <p className="text-xs text-gray-600 mt-2">
-            en <span className="font-bold text-[#00A650]">12 cuotas de $108.25 sin interés</span>
+            en <span className="font-bold text-meli-green">12 cuotas de $108.25 sin interés</span>
           </p>
-          <button className="text-[11px] font-bold text-blue-600 hover:text-blue-700 mt-1 flex items-center gap-0.5">
+          <button className="text-[11px] font-bold text-meli-blue hover:text-blue-700 mt-1 flex items-center gap-0.5">
             Ver medios de pago <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
@@ -218,22 +218,22 @@ export default function ProductDetail() {
         {/* Delivery / Shipping details */}
         <div className="p-4 border-b border-gray-100 space-y-4">
           <div className="flex items-start gap-3">
-            <Truck className="w-5 h-5 text-[#00A650] mt-0.5 flex-shrink-0" />
+            <Truck className="w-5 h-5 text-meli-green mt-0.5 flex-shrink-0" />
             <div>
-              <p className="text-xs font-bold text-[#00A650] flex items-center gap-1.5">
+              <p className="text-xs font-bold text-meli-green flex items-center gap-1.5">
                 Envío gratis ⚡ FULL
               </p>
               <p className="text-[11px] text-gray-500 mt-0.5">Llega gratis mañana a tu dirección habitual.</p>
-              <button className="text-[10px] font-bold text-blue-600 hover:text-blue-700 mt-1">
+              <button className="text-[10px] font-bold text-meli-blue hover:text-blue-700 mt-1">
                 Calcular fecha de entrega
               </button>
             </div>
           </div>
           
           <div className="flex items-start gap-3">
-            <RotateCcw className="w-5 h-5 text-[#3483FA] mt-0.5 flex-shrink-0" />
+            <RotateCcw className="w-5 h-5 text-meli-blue mt-0.5 flex-shrink-0" />
             <div>
-              <p className="text-xs font-bold text-[#3483FA]">Devolución gratis</p>
+              <p className="text-xs font-bold text-meli-blue">Devolución gratis</p>
               <p className="text-[11px] text-gray-500 mt-0.5">Tenes 30 días gratis desde que lo recibis para cambiarlo o devolverlo.</p>
             </div>
           </div>
@@ -257,7 +257,7 @@ export default function ProductDetail() {
                 onClick={() => setSelectedColor(color.name)}
                 className={`w-9 h-9 rounded-full border-2 p-0.5 transition-all shadow-xs cursor-pointer ${
                   selectedColor === color.name 
-                    ? 'border-blue-600 scale-105' 
+                    ? 'border-meli-blue scale-105' 
                     : 'border-gray-250 hover:scale-[1.03]'
                 }`}
               >
@@ -273,7 +273,7 @@ export default function ProductDetail() {
           
           {/* Meli Seller tag */}
           <div className="flex items-center gap-2 mb-3">
-            <span className="bg-[#3483FA]/10 text-blue-700 text-[10px] font-extrabold px-2 py-0.5 rounded">
+            <span className="bg-meli-blue/10 text-meli-blue text-[10px] font-extrabold px-2 py-0.5 rounded">
               🏆 MERCADOLÍDER PLATINUM
             </span>
             <span className="text-[10px] text-gray-400 font-semibold">¡Es uno de los mejores del sitio!</span>
@@ -285,7 +285,7 @@ export default function ProductDetail() {
             <div className="h-2 bg-orange-150 flex-1 opacity-40" />
             <div className="h-2 bg-yellow-150 flex-1 opacity-40" />
             <div className="h-2 bg-green-200 flex-1 opacity-40" />
-            <div className="h-2 rounded-r-full bg-[#00A650] flex-1 scale-y-125 shadow-xs" />
+            <div className="h-2 rounded-r-full bg-meli-green flex-1 scale-y-125 shadow-xs" />
           </div>
 
           {/* Seller Stats grid */}
@@ -299,7 +299,7 @@ export default function ProductDetail() {
               <p className="text-[9px] text-gray-400 leading-tight">Brinda buena atención postventa</p>
             </div>
             <div className="px-1">
-              <p className="text-base font-bold text-[#00A650]">A tiempo</p>
+              <p className="text-base font-bold text-meli-green">A tiempo</p>
               <p className="text-[9px] text-gray-400 leading-tight">Entrega sus productos sin demora</p>
             </div>
           </div>

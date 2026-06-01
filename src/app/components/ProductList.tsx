@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronLeft, SlidersHorizontal, Heart, ShoppingCart, Star, Sparkles } from 'lucide-react';
+import { ChevronLeft, SlidersHorizontal, Heart, ShoppingCart, Star } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
@@ -66,24 +66,24 @@ export default function ProductList() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans">
+    <div className="flex flex-col h-screen bg-meli-gray font-sans">
       
       {/* Header */}
-      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
-        <Link to="/mockup/home" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
+        <Link to="/mockup/home" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <ChevronLeft className="w-6 h-6 text-gray-800" />
         </Link>
         <h1 className="font-extrabold capitalize flex-1 text-center text-gray-800 tracking-tight text-base">
           {category}
         </h1>
         <div className="flex gap-2">
-          <Link to="/mockup/cart" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors relative">
+          <Link to="/mockup/cart" className="p-1 hover:bg-black/5 rounded-full transition-colors relative">
             <ShoppingCart className="w-6 h-6 text-gray-800" />
-            <span className="absolute top-0 right-0 bg-[#3483FA] text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border border-[#FFE600]">
+            <span className="absolute top-0 right-0 bg-meli-blue text-white text-[9px] font-bold w-4.5 h-4.5 rounded-full flex items-center justify-center border border-meli-yellow">
               2
             </span>
           </Link>
-          <button className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+          <button className="p-1 hover:bg-black/5 rounded-full transition-colors">
             <SlidersHorizontal className="w-6 h-6 text-gray-800" />
           </button>
         </div>
@@ -95,7 +95,7 @@ export default function ProductList() {
           onClick={() => setActiveFilter('todos')}
           className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${
             activeFilter === 'todos' 
-              ? 'bg-blue-50 text-blue-600 border border-blue-200' 
+              ? 'bg-blue-50 text-meli-blue border border-blue-200' 
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent'
           }`}
         >
@@ -105,7 +105,7 @@ export default function ProductList() {
           onClick={() => setActiveFilter('envio')}
           className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${
             activeFilter === 'envio' 
-              ? 'bg-blue-50 text-blue-600 border border-blue-200' 
+              ? 'bg-blue-50 text-meli-blue border border-blue-200' 
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent'
           }`}
         >
@@ -115,7 +115,7 @@ export default function ProductList() {
           onClick={() => setActiveFilter('ofertas')}
           className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${
             activeFilter === 'ofertas' 
-              ? 'bg-blue-50 text-blue-600 border border-blue-200' 
+              ? 'bg-blue-50 text-meli-blue border border-blue-200' 
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent'
           }`}
         >
@@ -125,7 +125,7 @@ export default function ProductList() {
           onClick={() => setActiveFilter('valorados')}
           className={`px-4 py-1.5 rounded-full text-xs font-bold transition-colors whitespace-nowrap cursor-pointer ${
             activeFilter === 'valorados' 
-              ? 'bg-blue-50 text-blue-600 border border-blue-200' 
+              ? 'bg-blue-50 text-meli-blue border border-blue-200' 
               : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-transparent'
           }`}
         >
@@ -142,7 +142,7 @@ export default function ProductList() {
             <p className="text-gray-500 text-xs mt-1">Prueba seleccionando otro filtro de arriba.</p>
             <button 
               onClick={() => setActiveFilter('todos')}
-              className="mt-4 bg-[#3483FA] text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors"
+              className="mt-4 bg-meli-blue text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition-colors"
             >
               Mostrar todos
             </button>
@@ -163,7 +163,7 @@ export default function ProductList() {
                 />
                 
                 {product.isFull && (
-                  <span className="absolute bottom-2 left-2 bg-[#00A650] text-white text-[8px] font-black px-1 rounded flex items-center gap-0.5 italic shadow-xs">
+                  <span className="absolute bottom-2 left-2 bg-meli-green text-white text-[8px] font-black px-1 rounded flex items-center gap-0.5 italic shadow-xs">
                     ⚡ FULL
                   </span>
                 )}
@@ -172,7 +172,7 @@ export default function ProductList() {
               {/* Product Info Section */}
               <div className="flex-1 p-3.5 flex flex-col justify-between min-w-0">
                 <div>
-                  <h3 className="text-xs font-semibold text-gray-800 line-clamp-2 leading-tight mb-1 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xs font-semibold text-gray-800 line-clamp-2 leading-tight mb-1 group-hover:text-meli-blue transition-colors">
                     {product.title}
                   </h3>
                   
@@ -190,7 +190,7 @@ export default function ProductList() {
                     <span className="font-extrabold text-base text-gray-900">${product.price.toLocaleString()}</span>
                     
                     {product.discount && (
-                      <span className="text-[9px] text-green-600 font-extrabold bg-green-50 px-1 rounded">
+                      <span className="text-[9px] text-meli-green font-extrabold bg-green-50 px-1 rounded">
                         {product.discount}% OFF
                       </span>
                     )}
@@ -205,7 +205,7 @@ export default function ProductList() {
                   {/* Installments & Free shipping */}
                   <div className="mt-1.5 flex flex-col gap-0.5 border-t border-gray-50 pt-1.5">
                     {product.shipping && (
-                      <span className="text-[10px] text-[#00A650] font-extrabold flex items-center gap-0.5">
+                      <span className="text-[10px] text-meli-green font-extrabold flex items-center gap-0.5">
                         Envío gratis
                       </span>
                     )}

@@ -39,12 +39,12 @@ export default function Menu() {
   ];
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans text-gray-900 select-none">
+    <div className="flex flex-col h-screen bg-meli-light font-sans text-gray-900 select-none">
       
       {/* Header */}
-      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
         <h1 className="font-extrabold text-gray-800 text-base tracking-tight">Navegación</h1>
-        <Link to="/mockup/home" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+        <Link to="/mockup/home" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <X className="w-6 h-6 text-gray-800" />
         </Link>
       </div>
@@ -60,7 +60,7 @@ export default function Menu() {
         <div className="flex-1 min-w-0">
           <h2 className="font-extrabold text-sm tracking-tight text-white leading-tight">Emmanuel</h2>
           <p className="text-[10px] text-gray-300 font-bold mt-0.5">
-            Miembro <span className="text-[#3483FA]">meli+</span> • Nivel 6
+            Miembro <span className="text-meli-blue">meli+</span> • Nivel 6
           </p>
         </div>
         <ChevronRight className="w-5 h-5 text-gray-400" />
@@ -88,12 +88,12 @@ export default function Menu() {
                   
                   <div className="flex items-center gap-1.5 flex-shrink-0">
                     {item.badge && (
-                      <span className="bg-[#3483FA] text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
+                      <span className="bg-meli-blue text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
                         {item.badge}
                       </span>
                     )}
                     {item.highlight && (
-                      <span className="text-blue-600 font-bold text-xs">
+                      <span className="text-meli-blue font-bold text-xs">
                         {item.highlight}
                       </span>
                     )}

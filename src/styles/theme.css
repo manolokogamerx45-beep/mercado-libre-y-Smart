@@ -78,8 +78,14 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
+@theme {
   --font-sans: 'Montserrat', sans-serif;
+  --color-meli-yellow: #FFE600;
+  --color-meli-blue: #3483FA;
+  --color-meli-green: #00A650;
+  --color-meli-gray: #EEEEEE;
+  --color-meli-light: #F5F5F5;
+  --color-meli-dark: #333333;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -189,4 +195,12 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Force colors and background graphics when printing / saving as PDF */
+@media print {
+  body, html, * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }

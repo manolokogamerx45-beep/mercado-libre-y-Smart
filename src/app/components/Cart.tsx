@@ -58,17 +58,17 @@ export default function Cart() {
   }, {});
 
   return (
-    <div className="flex flex-col h-screen bg-[#F5F5F5] font-sans">
+    <div className="flex flex-col h-screen bg-meli-light font-sans">
       
       {/* Header */}
-      <div className="bg-[#FFE600] px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
-        <Link to="/mockup/home" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+      <div className="bg-meli-yellow px-4 py-3 flex items-center justify-between shadow-sm sticky top-0 z-30">
+        <Link to="/mockup/home" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <ChevronLeft className="w-6 h-6 text-gray-800" />
         </Link>
         <h1 className="font-extrabold flex-1 text-center text-gray-800 tracking-tight text-base">
           Mi Carrito ({items.reduce((sum, item) => sum + item.quantity, 0)})
         </h1>
-        <Link to="/mockup/menu" className="p-1 hover:bg-[#FFE600]/80 rounded-full transition-colors">
+        <Link to="/mockup/menu" className="p-1 hover:bg-black/5 rounded-full transition-colors">
           <Menu className="w-6 h-6 text-gray-800" />
         </Link>
       </div>
@@ -84,7 +84,7 @@ export default function Cart() {
             </p>
             <Link
               to="/mockup/home"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-xs shadow-sm transition-colors"
+              className="bg-meli-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold text-xs shadow-sm transition-colors"
             >
               Explorar productos
             </Link>
@@ -100,7 +100,7 @@ export default function Cart() {
                   <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">
                     Compra a: <span className="text-gray-700 font-extrabold">{seller}</span>
                   </span>
-                  <span className="text-[9px] text-[#00A650] font-bold bg-green-50 px-1.5 py-0.5 rounded">
+                  <span className="text-[9px] text-meli-green font-bold bg-green-50 px-1.5 py-0.5 rounded">
                     Compra garantizada
                   </span>
                 </div>
@@ -122,12 +122,12 @@ export default function Cart() {
                           <div className="flex items-baseline gap-1.5">
                             <span className="font-extrabold text-sm text-gray-900">${item.price.toLocaleString()}</span>
                             {item.isFull && (
-                              <span className="bg-[#00A650] text-white text-[8px] font-black px-1 rounded inline-block italic">
+                            <span className="bg-meli-green text-white text-[8px] font-black px-1 rounded inline-block italic">
                                 ⚡ FULL
                               </span>
                             )}
                           </div>
-                          <p className="text-[10px] text-green-600 font-bold mt-0.5">Envío gratis</p>
+                          <p className="text-[10px] text-meli-green font-bold mt-0.5">Envío gratis</p>
                         </div>
                         <button
                           onClick={() => removeItem(item.id)}
@@ -171,7 +171,7 @@ export default function Cart() {
             {/* Interactive Coupon Widget */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
               <h3 className="font-bold text-xs text-gray-800 mb-2 flex items-center gap-1">
-                <Sparkles className="w-4 h-4 text-blue-600" />
+                <Sparkles className="w-4 h-4 text-meli-blue" />
                 ¿Tenés un cupón de descuento?
               </h3>
               
@@ -181,18 +181,18 @@ export default function Cart() {
                   placeholder="Ej: MELIPLUS o HOT50"
                   value={couponCode}
                   onChange={(e) => setCouponCode(e.target.value)}
-                  className="flex-1 outline-none border border-gray-250 rounded-xl px-3.5 py-2 text-xs text-gray-800 focus:border-blue-600 bg-white"
+                  className="flex-1 outline-none border border-gray-250 rounded-xl px-3.5 py-2 text-xs text-gray-800 focus:border-meli-blue bg-white"
                 />
                 <button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors cursor-pointer"
+                  className="bg-meli-blue hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-xl transition-colors cursor-pointer"
                 >
                   Aplicar
                 </button>
               </form>
 
               {couponSuccess && (
-                <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-green-600 bg-green-50 p-2 rounded-lg">
+                <div className="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-meli-green bg-green-50 p-2 rounded-lg">
                   <CheckCircle className="w-4 h-4 flex-shrink-0" />
                   <span>{couponSuccess}</span>
                 </div>
@@ -219,11 +219,11 @@ export default function Cart() {
             </div>
             <div className="flex justify-between text-xs text-gray-500">
               <span>Envío</span>
-              <span className="text-[#00A650] font-extrabold bg-green-50 px-1 rounded">Gratis</span>
+              <span className="text-meli-green font-extrabold bg-green-50 px-1 rounded">Gratis</span>
             </div>
             
             {discountAmount > 0 && (
-              <div className="flex justify-between text-xs text-green-600 font-semibold bg-green-50/50 p-1.5 rounded">
+              <div className="flex justify-between text-xs text-meli-green font-semibold bg-green-50/50 p-1.5 rounded">
                 <span>Cupón descuento</span>
                 <span>-${discountAmount.toLocaleString()}</span>
               </div>
@@ -235,7 +235,7 @@ export default function Cart() {
             </div>
           </div>
 
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-sm transition-colors shadow-sm cursor-pointer">
+          <button className="w-full bg-meli-blue hover:bg-blue-700 text-white py-3.5 rounded-xl font-bold text-sm transition-colors shadow-sm cursor-pointer">
             Continuar compra
           </button>
 
