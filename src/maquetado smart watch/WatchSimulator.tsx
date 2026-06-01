@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 interface WatchSimulatorProps {
   children: ReactNode;
@@ -18,10 +19,18 @@ export default function WatchSimulator({ children }: WatchSimulatorProps) {
         {/* Watch Case (Cuerpo del reloj) */}
         <div className="relative w-[280px] h-[320px] bg-gradient-to-br from-zinc-700 via-zinc-800 to-zinc-950 rounded-[48px] p-3.5 shadow-2xl border border-zinc-600/60 flex items-center justify-center print:bg-zinc-900 print:shadow-none print:rounded-[36px] print:p-1.5">
           
-          {/* Digital Crown (Corona derecha) */}
-          <div className="absolute -right-2 top-20 w-3 h-11 bg-gradient-to-b from-zinc-600 via-zinc-700 to-zinc-800 rounded-r-md border-y border-r border-zinc-500 shadow-md print:hidden" />
-          {/* Side Button (Botón lateral derecho) */}
-          <div className="absolute -right-1 top-36 w-1.5 h-14 bg-zinc-800 rounded-r-sm border-r border-zinc-700 shadow-sm print:hidden" />
+          {/* Digital Crown (Corona derecha) - Links to Clockface (Home) */}
+          <Link 
+            to="/mockup/smartwatch/home"
+            title="Inicio (Reloj)"
+            className="absolute -right-2 top-20 w-3 h-11 bg-gradient-to-b from-zinc-500 via-zinc-600 to-zinc-700 rounded-r-md border-y border-r border-zinc-400 shadow-md hover:brightness-110 active:translate-x-[-1px] transition-all cursor-pointer print:hidden"
+          />
+          {/* Side Button (Botón lateral derecho) - Links to App Launcher */}
+          <Link 
+            to="/mockup/smartwatch/apps"
+            title="Aplicaciones"
+            className="absolute -right-1 top-36 w-1.5 h-14 bg-zinc-800 hover:bg-zinc-700 rounded-r-sm border-r border-zinc-600 shadow-sm active:translate-x-[-1px] transition-all cursor-pointer print:hidden"
+          />
 
           {/* Screen Bezel (Borde interior de la pantalla) */}
           <div className="relative w-full h-full bg-black rounded-[36px] p-1.5 overflow-hidden flex items-center justify-center border border-black/90 print:rounded-[32px]">
