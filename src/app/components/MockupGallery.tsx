@@ -292,7 +292,7 @@ export default function MockupGallery() {
                   ) : (
                     <>
                       {/* TV Container (Simulator logic already inside TV views) */}
-                      <div className="relative w-[480px] h-[280px] rounded-2xl overflow-hidden print:w-[500px] print:h-auto print:max-h-none print:overflow-visible">
+                      <div className="relative w-[680px] h-[435px] rounded-2xl overflow-hidden print:w-[680px] print:h-auto print:max-h-none print:overflow-visible">
                         <iframe
                           src={mockup.route}
                           className="w-full h-full border-0 pointer-events-none print:h-auto print:max-h-none print:overflow-visible"
