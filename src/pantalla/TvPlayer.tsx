@@ -44,7 +44,7 @@ export default function TvPlayer() {
   const percentage = (progress / movie.seconds) * 100;
 
   return (
-    <div className="flex-1 bg-black flex flex-col justify-between p-3 text-[10px] relative text-white select-none overflow-hidden font-mono">
+    <div className="flex-1 bg-black flex flex-col justify-between p-6 text-sm relative text-white select-none overflow-hidden font-sans">
       {/* Background Poster Blurred */}
       <div className="absolute inset-0 bg-black z-0">
         <ImageWithFallback
@@ -55,42 +55,42 @@ export default function TvPlayer() {
       </div>
 
       {/* Top HUD overlay: Back button & Title */}
-      <div className="flex items-center justify-between relative z-10 bg-gradient-to-b from-black/85 to-transparent p-1.5 rounded-t-lg">
-        <div className="flex items-center gap-2">
-          <Link to="/mockup/tv/app" className="hover:bg-zinc-800 p-0.5 rounded-full text-white transition-colors">
-            <ArrowLeft className="w-3.5 h-3.5" />
+      <div className="flex items-center justify-between relative z-10 bg-gradient-to-b from-black/85 to-transparent p-3 rounded-t-xl">
+        <div className="flex items-center gap-3">
+          <Link to="/mockup/tv/app" className="hover:bg-zinc-800 p-1 rounded-full text-white transition-colors">
+            <ArrowLeft className="w-5 h-5" />
           </Link>
-          <span className="font-extrabold text-[9px] uppercase tracking-wider text-gray-300">Mercado Play</span>
+          <span className="font-extrabold text-xs uppercase tracking-wider text-gray-300">Mercado Play</span>
         </div>
-        <span className="font-bold text-[9px] text-gray-300">{movie.title}</span>
+        <span className="font-bold text-xs text-gray-300">{movie.title}</span>
       </div>
 
       {/* Center overlay: Play/Pause indicator & Loading spinner */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 z-10 pointer-events-none">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3.5 z-10 pointer-events-none">
         {isPlaying ? (
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="w-7 h-7 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
-            <span className="text-[8px] text-cyan-400 font-extrabold tracking-wider uppercase bg-black/60 px-2 py-0.5 rounded animate-pulse">Reproduciendo</span>
+          <div className="flex flex-col items-center gap-2.5">
+            <div className="w-12 h-12 rounded-full border-4 border-cyan-400 border-t-transparent animate-spin" />
+            <span className="text-[10px] text-cyan-400 font-extrabold tracking-widest uppercase bg-black/60 px-3.5 py-1 rounded-lg shadow-md animate-pulse">Reproduciendo</span>
           </div>
         ) : (
-          <div className="bg-black/65 rounded-full p-4 border border-white/10 shadow-xl">
-            <Pause className="w-8 h-8 text-white fill-current" />
+          <div className="bg-black/65 rounded-full p-6 border border-white/10 shadow-2xl">
+            <Pause className="w-12 h-12 text-white fill-current animate-bounce" />
           </div>
         )}
       </div>
 
       {/* Bottom HUD overlay: Player controls & Time progress slider */}
-      <div className="relative z-10 bg-gradient-to-t from-black/90 to-transparent p-2.5 rounded-b-lg space-y-2 mt-auto">
+      <div className="relative z-10 bg-gradient-to-t from-black/90 to-transparent p-4 rounded-b-xl space-y-4 mt-auto">
         
         {/* Timeline Slider Progress */}
-        <div className="space-y-1">
-          <div className="h-1 bg-zinc-800 rounded-full w-full overflow-hidden relative">
+        <div className="space-y-2">
+          <div className="h-2 bg-zinc-850 rounded-full w-full overflow-hidden relative">
             <div 
               style={{ width: `${percentage}%` }}
-              className="h-full bg-cyan-400 rounded-full shadow-[0_0_8px_#22d3ee]" 
+              className="h-full bg-cyan-400 rounded-full shadow-[0_0_12px_#22d3ee]" 
             />
           </div>
-          <div className="flex items-center justify-between text-[8px] text-gray-400 font-bold px-0.5">
+          <div className="flex items-center justify-between text-xs text-gray-400 font-mono font-bold px-0.5">
             <span>{formatSeconds(progress)}</span>
             <span>-{formatSeconds(movie.seconds - progress)}</span>
           </div>
@@ -98,27 +98,27 @@ export default function TvPlayer() {
 
         {/* Player Controls Buttons */}
         <div className="flex items-center justify-between pt-1">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-5">
             <button 
               onClick={() => setIsPlaying(!isPlaying)}
-              className="hover:bg-zinc-850 p-1 rounded-full text-white cursor-pointer transition-colors active:scale-95"
+              className="hover:bg-zinc-800 p-2 rounded-full text-white cursor-pointer transition-colors active:scale-95 bg-white/5 border border-white/10"
             >
-              {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
+              {isPlaying ? <Pause className="w-6 h-6 fill-current" /> : <Play className="w-6 h-6 fill-current ml-0.5" />}
             </button>
-            <button className="hover:bg-zinc-850 p-1 rounded-full text-gray-400 hover:text-white transition-colors">
-              <Volume2 className="w-4 h-4" />
+            <button className="hover:bg-zinc-800 p-2 rounded-full text-gray-300 hover:text-white transition-colors">
+              <Volume2 className="w-6 h-6" />
             </button>
-            <button className="hover:bg-zinc-850 p-1 rounded-full text-gray-400 hover:text-white transition-colors">
-              <Subtitles className="w-4 h-4" />
+            <button className="hover:bg-zinc-800 p-2 rounded-full text-gray-300 hover:text-white transition-colors">
+              <Subtitles className="w-6 h-6" />
             </button>
           </div>
           
-          <div className="flex items-center gap-3">
-            <button className="hover:bg-zinc-850 p-1 rounded-full text-gray-400 hover:text-white transition-colors">
-              <Settings className="w-4 h-4" />
+          <div className="flex items-center gap-5">
+            <button className="hover:bg-zinc-800 p-2 rounded-full text-gray-300 hover:text-white transition-colors">
+              <Settings className="w-6 h-6" />
             </button>
-            <button className="hover:bg-zinc-850 p-1 rounded-full text-gray-400 hover:text-white transition-colors">
-              <Maximize2 className="w-4 h-4" />
+            <button className="hover:bg-zinc-800 p-2 rounded-full text-gray-300 hover:text-white transition-colors">
+              <Maximize2 className="w-6 h-6" />
             </button>
           </div>
         </div>

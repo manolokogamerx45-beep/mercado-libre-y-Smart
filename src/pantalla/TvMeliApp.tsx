@@ -48,7 +48,7 @@ export default function TvMeliApp() {
   const currentMovie = movies.find(m => m.id === focusedMovie) || movies[1];
 
   return (
-    <div className="flex-1 bg-gradient-to-b from-zinc-950 via-slate-950 to-zinc-950 flex flex-col justify-between p-3.5 text-[10px] relative text-white overflow-hidden select-none">
+    <div className="flex-1 bg-gradient-to-b from-zinc-950 via-slate-950 to-zinc-950 flex flex-col justify-between p-6 text-sm relative text-white overflow-hidden select-none">
       
       {/* Background Hero blur movie art */}
       <div className="absolute inset-0 bg-black/60 z-0">
@@ -60,64 +60,64 @@ export default function TvMeliApp() {
       </div>
 
       {/* Header bar */}
-      <div className="flex items-center justify-between border-b border-white/5 pb-1.5 relative z-10">
-        <div className="flex items-center gap-3">
-          <Link to="/mockup/tv/home" className="hover:bg-zinc-800 p-0.5 rounded-full text-white transition-colors">
-            <ArrowLeft className="w-3.5 h-3.5" />
+      <div className="flex items-center justify-between border-b border-white/5 pb-3 relative z-10">
+        <div className="flex items-center gap-5">
+          <Link to="/mockup/tv/home" className="hover:bg-zinc-800 p-1 rounded-full text-white transition-colors">
+            <ArrowLeft className="w-5 h-5" />
           </Link>
-          <div className="flex items-center gap-0.5 leading-none">
-            <span className="font-extrabold text-[10px] tracking-tight italic">mercado</span>
-            <span className="font-extrabold text-[10px] text-cyan-400">play</span>
+          <div className="flex items-center gap-1 leading-none">
+            <span className="font-extrabold text-base tracking-tight italic">mercado</span>
+            <span className="font-extrabold text-base text-cyan-400">play</span>
           </div>
-          <span className="text-gray-400 font-bold border-b-2 border-cyan-400 text-white pb-0.5">Inicio</span>
+          <span className="text-gray-400 font-bold border-b-2 border-cyan-400 text-white pb-1">Inicio</span>
           <span className="text-gray-400 font-semibold hover:text-white cursor-pointer">Películas</span>
           <span className="text-gray-400 font-semibold hover:text-white cursor-pointer">Series</span>
         </div>
-        <span className="bg-cyan-500/20 text-cyan-400 font-bold px-1.5 py-0.5 rounded text-[8px] uppercase tracking-wide">
+        <span className="bg-cyan-500/20 text-cyan-400 font-bold px-2.5 py-1 rounded text-[10px] uppercase tracking-wider">
           TV Mode
         </span>
       </div>
 
       {/* Hero Display details area */}
-      <div className="flex-1 my-2 flex flex-col justify-center max-w-[75%] space-y-2 relative z-10">
-        <h1 className="text-base font-black text-white leading-tight drop-shadow-md">{currentMovie.title}</h1>
+      <div className="flex-1 my-4 flex flex-col justify-center max-w-[75%] space-y-3 relative z-10">
+        <h1 className="text-2xl font-black text-white leading-tight drop-shadow-md">{currentMovie.title}</h1>
         
-        <div className="flex items-center gap-2.5 text-[8px] text-gray-400 font-bold">
-          <span className="text-cyan-400 font-extrabold bg-cyan-500/10 px-1.5 py-0.5 rounded">{currentMovie.genre}</span>
+        <div className="flex items-center gap-4 text-xs text-gray-400 font-bold">
+          <span className="text-cyan-400 font-extrabold bg-cyan-500/10 px-2 py-0.5 rounded">{currentMovie.genre}</span>
           <span>{currentMovie.year}</span>
-          <span className="flex items-center gap-0.5 text-yellow-500">
-            <Star className="w-2.5 h-2.5 fill-current" /> {currentMovie.rating}
+          <span className="flex items-center gap-1 text-yellow-500">
+            <Star className="w-3.5 h-3.5 fill-current" /> {currentMovie.rating}
           </span>
         </div>
         
-        <p className="text-[9px] text-gray-300 leading-snug line-clamp-2 drop-shadow-sm">
+        <p className="text-xs text-gray-300 leading-relaxed line-clamp-3 drop-shadow-sm max-w-xl">
           {currentMovie.desc}
         </p>
 
-        <div className="flex gap-2 pt-1">
+        <div className="flex gap-3 pt-2">
           <Link
             to={`/mockup/tv/play/${focusedMovie}`}
-            className="bg-cyan-400 hover:bg-cyan-500 text-black px-4 py-1.5 rounded-lg font-black text-[9px] flex items-center gap-1 shadow-md transition-all hover:scale-105 active:scale-95"
+            className="bg-cyan-400 hover:bg-cyan-500 text-black px-6 py-2.5 rounded-xl font-black text-xs flex items-center gap-1.5 shadow-md transition-all hover:scale-105 active:scale-95"
           >
-            <Play className="w-3.5 h-3.5 fill-current ml-0.5" /> Reproducir
+            <Play className="w-4 h-4 fill-current ml-0.5" /> Reproducir
           </Link>
-          <button className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-white px-3 py-1.5 rounded-lg font-bold text-[9px] flex items-center gap-1">
-            <Info className="w-3.5 h-3.5" /> Más info
+          <button className="bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 text-white px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-1.5">
+            <Info className="w-4 h-4" /> Más info
           </button>
         </div>
       </div>
 
       {/* Carousel Catalog */}
-      <div className="space-y-1.5 relative z-10">
-        <h3 className="text-gray-400 font-bold uppercase tracking-widest text-[7.5px] px-0.5">Catálogo destacado</h3>
+      <div className="space-y-2.5 relative z-10">
+        <h3 className="text-gray-400 font-bold uppercase tracking-widest text-[10px] px-0.5">Catálogo destacado</h3>
         
-        <div className="flex items-center gap-3 py-1 overflow-x-auto scrollbar-hide">
+        <div className="flex items-center gap-5 py-1 overflow-x-auto scrollbar-hide">
           {movies.map((movie) => (
             <button
               key={movie.id}
               onMouseEnter={() => setFocusedMovie(movie.id)}
               onClick={() => setFocusedMovie(movie.id)}
-              className={`w-28 text-left flex-shrink-0 flex gap-2 p-1.5 rounded-lg transition-all focus:outline-none cursor-pointer ${
+              className={`w-44 text-left flex-shrink-0 flex gap-3.5 p-2 rounded-xl transition-all focus:outline-none cursor-pointer ${
                 movie.id === focusedMovie 
                   ? 'bg-white/10 border border-cyan-400/60 scale-[1.03] shadow-md' 
                   : 'bg-zinc-950/40 border border-white/5 hover:bg-white/5'
@@ -126,12 +126,12 @@ export default function TvMeliApp() {
               <ImageWithFallback
                 src={movie.poster}
                 alt={movie.title}
-                className="w-10 h-14 object-cover rounded-md flex-shrink-0"
+                className="w-14 h-20 object-cover rounded-lg flex-shrink-0"
               />
               <div className="flex flex-col justify-center min-w-0">
-                <h4 className="font-extrabold text-[9px] text-white line-clamp-1">{movie.title}</h4>
-                <p className="text-[8px] text-gray-400 truncate mt-0.5">{movie.genre.split(' • ')[0]}</p>
-                <span className="text-[7px] text-yellow-500 font-bold mt-1">★ {movie.rating}</span>
+                <h4 className="font-extrabold text-xs text-white line-clamp-1">{movie.title}</h4>
+                <p className="text-[10px] text-gray-400 truncate mt-0.5">{movie.genre.split(' • ')[0]}</p>
+                <span className="text-[9px] text-yellow-500 font-bold mt-1.5">★ {movie.rating}</span>
               </div>
             </button>
           ))}
