@@ -15,6 +15,12 @@ import WatchHome from '../maquetado smart watch/WatchHome';
 import WatchApps from '../maquetado smart watch/WatchApps';
 import WatchMeliApp from '../maquetado smart watch/WatchMeliApp';
 
+// Smart TV Mockups
+import TvSimulator from '../pantalla/TvSimulator';
+import TvHome from '../pantalla/TvHome';
+import TvMeliApp from '../pantalla/TvMeliApp';
+import TvPlayer from '../pantalla/TvPlayer';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -95,6 +101,23 @@ export default function App() {
           <WatchSimulator>
             <WatchMeliApp />
           </WatchSimulator>
+        } />
+
+        {/* Smart TV Mockup Routes */}
+        <Route path="/mockup/tv/home" element={
+          <TvSimulator>
+            <TvHome />
+          </TvSimulator>
+        } />
+        <Route path="/mockup/tv/app" element={
+          <TvSimulator>
+            <TvMeliApp />
+          </TvSimulator>
+        } />
+        <Route path="/mockup/tv/play/:id" element={
+          <TvSimulator>
+            <TvPlayer />
+          </TvSimulator>
         } />
       </Routes>
     </BrowserRouter>

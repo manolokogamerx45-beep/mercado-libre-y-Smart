@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Printer } from 'lucide-react';
 
 export default function MockupGallery() {
-  const [activeTab, setActiveTab] = useState<'mobile' | 'watch'>('mobile');
+  const [activeTab, setActiveTab] = useState<'mobile' | 'watch' | 'tv'>('mobile');
 
   const mockups = [
     // Mobile Mockups
@@ -73,6 +73,25 @@ export default function MockupGallery() {
       title: 'Notificación de Envío',
       route: '/mockup/smartwatch/meli-app',
       type: 'watch'
+    },
+    // Smart TV Mockups
+    {
+      id: 12,
+      title: 'Inicio (Smart TV)',
+      route: '/mockup/tv/home',
+      type: 'tv'
+    },
+    {
+      id: 13,
+      title: 'Catálogo Mercado Play (Smart TV)',
+      route: '/mockup/tv/app',
+      type: 'tv'
+    },
+    {
+      id: 14,
+      title: 'Reproductor de Películas (Smart TV)',
+      route: '/mockup/tv/play/2',
+      type: 'tv'
     }
   ];
 
@@ -186,7 +205,7 @@ export default function MockupGallery() {
         </div>
 
         {/* Tab Switcher - Screen Only */}
-        <div className="flex justify-center gap-4 mb-8 print:hidden select-none">
+        <div className="flex flex-wrap justify-center gap-4 mb-8 print:hidden select-none">
           <button
             onClick={() => setActiveTab('mobile')}
             className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all cursor-pointer ${
@@ -206,6 +225,16 @@ export default function MockupGallery() {
             }`}
           >
             Maquetas Smartwatch ({mockups.filter(m => m.type === 'watch').length})
+          </button>
+          <button
+            onClick={() => setActiveTab('tv')}
+            className={`px-5 py-2.5 rounded-xl font-bold text-xs shadow-sm transition-all cursor-pointer ${
+              activeTab === 'tv'
+                ? 'bg-[#3483FA] text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+            }`}
+          >
+            Pantalla Smart TV ({mockups.filter(m => m.type === 'tv').length})
           </button>
         </div>
 
@@ -249,10 +278,21 @@ export default function MockupGallery() {
                         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-1 bg-gray-700 rounded-full print:hidden" />
                       </div>
                     </>
-                  ) : (
+                  ) : mockup.type === 'watch' ? (
                     <>
                       {/* Watch Container (Simulator logic already inside watch views) */}
                       <div className="relative w-[280px] h-[340px] rounded-[3rem] overflow-hidden print:w-[380px] print:h-auto print:max-h-none print:overflow-visible">
+                        <iframe
+                          src={mockup.route}
+                          className="w-full h-full border-0 pointer-events-none print:h-auto print:max-h-none print:overflow-visible"
+                          title={mockup.title}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* TV Container (Simulator logic already inside TV views) */}
+                      <div className="relative w-[480px] h-[280px] rounded-2xl overflow-hidden print:w-[500px] print:h-auto print:max-h-none print:overflow-visible">
                         <iframe
                           src={mockup.route}
                           className="w-full h-full border-0 pointer-events-none print:h-auto print:max-h-none print:overflow-visible"
